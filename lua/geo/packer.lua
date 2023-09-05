@@ -20,10 +20,34 @@ return require('packer').startup(function(use)
 	  end
   })
 
+    use({
+	  'rose-pine/neovim',
+	  as = 'rose-pine',
+	  config = function()
+		  vim.cmd('colorscheme rose-pine')
+	  end
+  })
+
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   -- This is to check stuff and create plugins if needed with TSPlaygroung , not sure i need that 
   use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  -- LSP setup 
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v2.x',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},             -- Required
+		  {'williamboman/mason.nvim'},           -- Optional
+		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},     -- Required
+		  {'hrsh7th/cmp-nvim-lsp'}, -- Required
+		  {'L3MON4D3/LuaSnip'},     -- Required
+	  }
+  }
 end)
