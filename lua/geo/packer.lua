@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   -- File tree
   use 'nvim-tree/nvim-tree.lua'
+
   -- File tree icons 
   use 'nvim-tree/nvim-web-devicons'
 
@@ -19,10 +20,10 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
+	  'folke/tokyonight.nvim',
+	  as = 'tokyonight',
 	  config = function()
-		  vim.cmd('colorscheme rose-pine')
+		  vim.cmd('colorscheme tokyonight')
 	  end
   })
 
@@ -37,8 +38,6 @@ return require('packer').startup(function(use)
     })
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  -- This is to check stuff and create plugins if needed with TSPlaygroung , not sure i need that 
-  use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
