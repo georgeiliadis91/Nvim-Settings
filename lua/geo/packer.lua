@@ -38,13 +38,7 @@ return require('packer').startup(function(use)
 
   -- Integrated terminal
   -- <leader>; to toggle
-   use ({
-    's1n7ax/nvim-terminal',
-    config = function()
-        vim.o.hidden = true
-        require('nvim-terminal').setup()
-    end,
-    })
+   use 's1n7ax/nvim-terminal'
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
