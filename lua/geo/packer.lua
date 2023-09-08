@@ -10,10 +10,8 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   -- File tree icons 
   use 'nvim-tree/nvim-web-devicons'
-
   -- Github-copilot
   use 'github/copilot.vim'
-
   use 'lewis6991/gitsigns.nvim'
   -- Status line
   use  {
@@ -21,12 +19,13 @@ return require('packer').startup(function(use)
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
+  use 'xiyaowong/transparent.nvim'
+
   use {
 	'nvim-telescope/telescope.nvim', tag = '0.1.2',
 	-- or                            , branch = '0.1.x',
 	requires = { {'nvim-lua/plenary.nvim'} }
   }
-
   --Theme 
   use({
 	  'folke/tokyonight.nvim',
@@ -35,10 +34,9 @@ return require('packer').startup(function(use)
 		  vim.cmd('colorscheme tokyonight')
 	  end
   })
-
   -- Integrated terminal
   -- <leader>; to toggle
-   use 's1n7ax/nvim-terminal'
+  use 's1n7ax/nvim-terminal'
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
