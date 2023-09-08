@@ -11,6 +11,9 @@ return require('packer').startup(function(use)
   -- File tree icons 
   use 'nvim-tree/nvim-web-devicons'
 
+  -- Github-copilot
+  use 'github/copilot.vim'
+
   use 'lewis6991/gitsigns.nvim'
   -- Status line
   use  {
