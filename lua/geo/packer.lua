@@ -8,11 +8,15 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   -- File tree
   use 'nvim-tree/nvim-tree.lua'
-
   -- File tree icons 
   use 'nvim-tree/nvim-web-devicons'
 
   use 'lewis6991/gitsigns.nvim'
+  -- Status line
+  use  {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 
   use {
 	'nvim-telescope/telescope.nvim', tag = '0.1.2',
