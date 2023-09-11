@@ -1,14 +1,29 @@
-## Personal Nvim Setup
+# Personal Nvim Setup
 
-Clone files into ~/.config
+## Prerequisites
 
 Make sure you have packer installed from here:
+[Packer Install Here](https://github.com/wbthomason/packer.nvim#quickstart)
+
+Make sure you have installed 
 
 ```
-https://github.com/wbthomason/packer.nvim#quickstart 
+rigprep, fg
 ```
+Avalable via most package managers
+
+Clone files into ~/.config/nvim
+
+Rename the geo dir as you please.
+On the main packer.lua file run
+:so
+and PackerSync to download the plugins
+
+Note run :lua ThemeUpdate() after each :PackerSync
+to make sure your theme is not broken
 
 Use :Mason to toggle and install lsp's from list
 
-Run :lua ThemeUpdate() after each :PackerSync
+Check the after/plugins/{plugin_name.lua} file for relevant keymaps
 
+ @todo: add list of plugins used
