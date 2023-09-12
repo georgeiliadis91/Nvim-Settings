@@ -10,16 +10,30 @@ Make sure you have installed
 ```
 rigprep, fg
 ```
-Avalable via most package managers
+Available via most package managers
 
 Clone files into ~/.config/nvim
 
-Rename the geo dir as you please.
+Rename the geo dir as you please and make sure to update the path of the init files.
 On the main packer.lua file run
+```
 :so
-and PackerSync to download the plugins
+```
+and 
+```
+:PackerSync 
+```
+to download the plugins
 
-Note run :lua ThemeUpdate() after each :PackerSync
+Note run 
+```
+:lua ThemeUpdate()
+```
+after each 
+```
+:PackerSync
+```
+
 to make sure your theme is not broken
 
 Use :Mason to toggle and install lsp's from list
