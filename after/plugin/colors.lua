@@ -1,8 +1,5 @@
 -- Need to call this after every PackerSync execution
-function ThemeUpdate(color)
-	color = color or "tokyonight"
-	vim.cmd.colorscheme(color)
-    require("tokyonight").setup({
+require("tokyonight").setup({
         -- your configuration comes here
         -- or leave it empty to use the default settings
         style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
@@ -39,6 +36,9 @@ function ThemeUpdate(color)
     })
 
 
+function ThemeUpdate(color)
+	color = color or "tokyonight"
+	vim.cmd.colorscheme(color)
 end
 
 ThemeUpdate()
