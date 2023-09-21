@@ -38,6 +38,8 @@ to make sure your theme is not broken
 
 Use :Mason to toggle and install lsp's from list
 
+Includes github's copilot setup for nvim
+
 Check the after/plugins/{plugin_name.lua} file for relevant keymaps
 
  @todo: add list of plugins used
