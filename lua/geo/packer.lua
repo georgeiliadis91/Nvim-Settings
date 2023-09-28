@@ -26,16 +26,16 @@ return require('packer').startup(function(use)
   }
 
   --Theme 
---  use({
---	  'folke/tokyonight.nvim',
---	  as = 'tokyonight',
---	  config = function()
---		  vim.cmd('colorscheme tokyonight')
---	  end
--- })
+  use({
+      'folke/tokyonight.nvim',
+      as = 'tokyonight',
+      config = function()
+          vim.cmd('colorscheme tokyonight')
+      end
+  })
 --
 
-  use "rebelot/kanagawa.nvim"
+--  use "rebelot/kanagawa.nvim"
 
     -- Integrated terminal
   -- <leader>; to toggle
