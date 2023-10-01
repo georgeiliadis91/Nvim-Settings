@@ -5,10 +5,12 @@
 Make sure you have packer installed from here:
 [Packer Install Here](https://github.com/wbthomason/packer.nvim#quickstart)
 
+Required v0.9+ of neovim.
+
 Make sure you have installed 
 
 ```
-rigprep, fg
+ripgrep, fg
 ```
 Available via most package managers
 
@@ -24,17 +26,6 @@ and
 :PackerSync 
 ```
 to download the plugins
-
-Note run 
-```
-:lua ThemeUpdate()
-```
-after each 
-```
-:PackerSync
-```
-
-to make sure your theme is not broken
 
 Use :Mason to toggle and install lsp's from list
 
