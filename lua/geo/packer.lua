@@ -26,13 +26,22 @@ return require('packer').startup(function(use)
   }
 
   --Theme 
-  use({
-      'folke/tokyonight.nvim',
-      as = 'tokyonight',
-      config = function()
-          vim.cmd('colorscheme tokyonight')
-      end
-  })
+  --use({
+  --    'folke/tokyonight.nvim',
+  --    as = 'tokyonight',
+  --    config = function()
+  --         vim.cmd('colorscheme tokyonight')
+  --    end
+  --})
+
+ use({
+     'marko-cerovac/material.nvim',
+     as = 'material',
+     config = function()
+          vim.cmd('colorscheme material')
+     end
+ })
+
 --
 
 --  use "rebelot/kanagawa.nvim"
