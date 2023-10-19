@@ -2,7 +2,6 @@ local builtin = require("material.functions");
 vim.keymap.set('n', '<leader>pk', builtin.find_style, {})
 
 require('material').setup({
-
     contrast = {
         terminal = false, -- Enable contrast for the built-in terminal
         sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
@@ -56,7 +55,7 @@ require('material').setup({
         darker = true -- Enable higher contrast text for darker style
     },
 
-    lualine_style = "stealth", -- Lualine style ( can be 'stealth' or 'default' )
+    lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
 
     async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
 
