@@ -37,23 +37,13 @@ return require('packer').startup(function(use)
   --    end
   --})
 
-  -- use({
-  --     'marko-cerovac/material.nvim',
-  --     as = 'material',
-  --     config = function()
-  --          vim.cmd('colorscheme material')
-  --     end
-  -- })
-
-
-  use({
-    'Shatur/neovim-ayu',
-      as = 'ayu-dark',
-      config = function()
-           vim.cmd('colorscheme ayu-dark')
-      end
-  })
---
+   use({
+       'marko-cerovac/material.nvim',
+       as = 'material',
+       config = function()
+            vim.cmd('colorscheme material')
+       end
+   })
 
 --  use "rebelot/kanagawa.nvim"
 
