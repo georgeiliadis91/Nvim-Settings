@@ -55,8 +55,15 @@ return require('packer').startup(function(use)
   --    end
   --})
 
- use { "catppuccin/nvim", as = "catppuccin" }
+use {
+    'uloco/bluloco.nvim',
+    requires = { 'rktjmp/lush.nvim' },
+        as = 'bluloco',
+        config = function()
+         vim.cmd('colorscheme bluloco')
+        end
 
+}
 --  use "rebelot/kanagawa.nvim"
 
     -- Integrated terminal

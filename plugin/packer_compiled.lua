@@ -79,10 +79,10 @@ _G.packer_plugins = {
     path = "/Users/geo/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  catppuccin = {
+  ["bluloco.nvim"] = {
     loaded = true,
-    path = "/Users/geo/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
+    path = "/Users/geo/.local/share/nvim/site/pack/packer/start/bluloco.nvim",
+    url = "https://github.com/uloco/bluloco.nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -138,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/geo/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/Users/geo/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["marks.nvim"] = {
     loaded = true,
