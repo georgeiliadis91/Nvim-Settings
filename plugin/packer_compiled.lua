@@ -79,9 +79,10 @@ _G.packer_plugins = {
     path = "/Users/geo/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["bluloco.nvim"] = {
+  bluloco = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24colorscheme bluloco\bcmd\bvim\0" },
     loaded = true,
-    path = "/Users/geo/.local/share/nvim/site/pack/packer/start/bluloco.nvim",
+    path = "/Users/geo/.local/share/nvim/site/pack/packer/start/bluloco",
     url = "https://github.com/uloco/bluloco.nvim"
   },
   ["cmp-buffer"] = {
@@ -217,6 +218,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: bluloco
+time([[Config for bluloco]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24colorscheme bluloco\bcmd\bvim\0", "config", "bluloco")
+time([[Config for bluloco]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
