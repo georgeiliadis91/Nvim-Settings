@@ -47,23 +47,23 @@ return require('packer').startup(function(use)
   }
 
   --Theme 
-  --use({
-  --    'folke/tokyonight.nvim',
-  --    as = 'tokyonight',
-  --    config = function()
-  --         vim.cmd('colorscheme tokyonight')
-  --    end
-  --})
-
-use {
-    'uloco/bluloco.nvim',
-    requires = { 'rktjmp/lush.nvim' },
-        as = 'bluloco',
-        config = function()
-         vim.cmd('colorscheme bluloco')
-        end
-
-}
+  use({
+      'folke/tokyonight.nvim',
+      as = 'tokyonight',
+      config = function()
+           vim.cmd('colorscheme tokyonight')
+      end
+  })
+--
+--use {
+--    'uloco/bluloco.nvim',
+--    requires = { 'rktjmp/lush.nvim' },
+--        as = 'bluloco',
+--        config = function()
+--         vim.cmd('colorscheme bluloco')
+--        end
+--
+--}
 --  use "rebelot/kanagawa.nvim"
 
     -- Integrated terminal
