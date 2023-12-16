@@ -48,12 +48,13 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-      'folke/tokyonight.nvim',
-      as = 'tokyonight',
+      'navarasu/onedark.nvim',
+      as = 'onedark',
       config = function()
-           vim.cmd('colorscheme tokyonight')
+           vim.cmd('colorscheme onedark')
       end
   })
+  
 --
 --use {
 --    'uloco/bluloco.nvim',
