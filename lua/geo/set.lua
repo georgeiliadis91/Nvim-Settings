@@ -29,3 +29,5 @@ vim.opt.updatetime = 50
 vim.g.material_style = "darker"
 
 vim.opt.clipboard = "unnamedplus"
+
+
