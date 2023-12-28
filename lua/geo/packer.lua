@@ -6,19 +6,19 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
   -- File tree icons 
   use 'nvim-tree/nvim-web-devicons'
+
   -- Github-copilot
   use 'github/copilot.vim'
   use 'lewis6991/gitsigns.nvim'
   -- Status line
+  --
   use  {
       'nvim-lualine/lualine.nvim',
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
-
-  -- Indentation
-  use "lukas-reineke/indent-blankline.nvim"
 
   -- Tabs
   -- use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
@@ -57,10 +57,10 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-      'navarasu/onedark.nvim',
-      as = 'onedark',
+      'Mofiqul/dracula.nvim',
+      as = 'dracula',
       config = function()
-           vim.cmd('colorscheme onedark')
+           vim.cmd('colorscheme dracula')
       end
   })
 
@@ -75,10 +75,6 @@ return require('packer').startup(function(use)
 --
 --}
 --  use "rebelot/kanagawa.nvim"
-
-    -- Integrated terminal
-  -- <leader>; to toggle
-  use 's1n7ax/nvim-terminal'
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
