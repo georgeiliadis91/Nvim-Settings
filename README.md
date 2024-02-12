@@ -22,9 +22,18 @@ On the main packer.lua file run
 :so
 ```
 and 
+
 ```
 :PackerSync 
 ```
+
+if encountered with any treesitter errors run 
+
+```
+:TSUpdate
+```
+
+
 to download the plugins
 
 Use :Mason to toggle and install lsp's from list
