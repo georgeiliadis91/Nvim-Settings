@@ -57,11 +57,13 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-      'Mofiqul/dracula.nvim',
-      as = 'dracula',
-      config = function()
-           vim.cmd('colorscheme dracula')
-      end
+       "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+           vim.cmd('colorscheme tokyonight')
+        end
   })
 
 --
