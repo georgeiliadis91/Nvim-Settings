@@ -57,16 +57,13 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-       "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-        config = function()
-           vim.cmd('colorscheme tokyonight')
-        end
+	  'rose-pine/neovim',
+	  as = 'rose-pine',
+	  config = function()
+		  vim.cmd('colorscheme rose-pine')
+	  end
   })
 
---
 --use {
 --    'uloco/bluloco.nvim',
 --    requires = { 'rktjmp/lush.nvim' },
