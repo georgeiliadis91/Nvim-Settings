@@ -79,6 +79,7 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use('brenoprata10/nvim-highlight-colors')
   -- LSP setup 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
