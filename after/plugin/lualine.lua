@@ -1,6 +1,7 @@
 require('lualine').setup {
   options = {
-    theme = 'onedark'
+    theme = 'nordic',
+    transparent = true,
   },
   sections = {
     lualine_c = {

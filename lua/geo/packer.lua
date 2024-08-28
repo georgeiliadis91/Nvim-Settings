@@ -57,10 +57,10 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-	  'ellisonleao/gruvbox.nvim',
-	  as = 'gruvbox',
+	  'AlexvZyl/nordic.nvim',
+	  as = 'nordic',
 	  config = function()
-		  vim.cmd('colorscheme gruvbox')
+		  vim.cmd('colorscheme nordic')
 	  end
   })
 
