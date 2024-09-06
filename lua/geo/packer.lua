@@ -57,11 +57,11 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-	  'AlexvZyl/nordic.nvim',
-	  as = 'nordic',
-	  config = function()
-		  vim.cmd('colorscheme nordic')
-	  end
+      'loctvl842/monokai-pro.nvim',
+      as = 'monokai-pro',
+      config = function()
+          vim.cmd('colorscheme monokai-pro')
+      end
   })
 
 --use {
