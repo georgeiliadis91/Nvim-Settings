@@ -57,10 +57,10 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-      'loctvl842/monokai-pro.nvim',
-      as = 'monokai-pro',
+      'Mofiqul/vscode.nvim',
+      as = 'vscode',
       config = function()
-          vim.cmd('colorscheme monokai-pro')
+          vim.cmd('colorscheme vscode')
       end
   })
 

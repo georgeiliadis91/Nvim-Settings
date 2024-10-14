@@ -1,6 +1,6 @@
 require('lualine').setup {
   options = {
-    theme = 'monokai-pro',
+    theme = 'vscode',
     transparent = true,
   },
   sections = {
