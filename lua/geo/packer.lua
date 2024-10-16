@@ -57,11 +57,11 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-      'Mofiqul/vscode.nvim',
-      as = 'vscode',
-      config = function()
-          vim.cmd('colorscheme vscode')
-      end
+	  'ellisonleao/gruvbox.nvim',
+	  as = 'gruvbox',
+	  config = function()
+		  vim.cmd('colorscheme gruvbox')
+	  end
   })
 
 --use {
