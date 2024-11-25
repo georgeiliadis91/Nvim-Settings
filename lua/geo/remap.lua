@@ -51,3 +51,7 @@ end)
 vim.keymap.set("n", "<leader>r", function()
     vim.cmd("NvimTreeFocus")
 end)
+
+-- Shortcut to display errors in a floating window
+vim.api.nvim_set_keymap('n', '<Leader>E', '<Cmd>lua vim.diagnostic.open_float(nil, {focusable=false})<CR>', { noremap = true, silent = true })
+
