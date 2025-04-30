@@ -56,23 +56,9 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-	  'ellisonleao/gruvbox.nvim',
-	  as = 'gruvbox',
-	  config = function()
-		  vim.cmd('colorscheme gruvbox')
-	  end
+       'folke/tokyonight.nvim',
+       as = 'tokyonight',
   })
-
---use {
---    'uloco/bluloco.nvim',
---    requires = { 'rktjmp/lush.nvim' },
---        as = 'bluloco',
---        config = function()
---         vim.cmd('colorscheme bluloco')
---        end
---
---}
---  use "rebelot/kanagawa.nvim"
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')

@@ -28,6 +28,9 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.g.material_style = "darker"
 
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+
 vim.opt.clipboard = "unnamedplus"
 
 
