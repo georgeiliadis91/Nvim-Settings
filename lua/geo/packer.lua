@@ -56,8 +56,8 @@ return require('packer').startup(function(use)
 
   --Theme 
   use({
-       'folke/tokyonight.nvim',
-       as = 'tokyonight',
+       'AlexvZyl/nordic.nvim',
+       as = 'nordic',
   })
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
