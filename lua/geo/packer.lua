@@ -60,7 +60,7 @@ return require('packer').startup(function(use)
        as = 'nordic',
   })
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate', branch = "master"})
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
