@@ -1,7 +1,6 @@
-require('nordic').load()
-require('nordic').setup({
-    transparent = {
-        float =  true,
-        bg = true
-    }
-})
+-- require('shadow').setup({
+--    transparent = {
+--        float =  true,
+--        bg = true
+--    }
+--})

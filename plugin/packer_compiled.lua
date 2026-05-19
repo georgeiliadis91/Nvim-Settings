@@ -149,11 +149,6 @@ _G.packer_plugins = {
     path = "/Users/georgios.iliadis/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  nordic = {
-    loaded = true,
-    path = "/Users/georgios.iliadis/.local/share/nvim/site/pack/packer/start/nordic",
-    url = "https://github.com/AlexvZyl/nordic.nvim"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/georgios.iliadis/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -194,6 +189,12 @@ _G.packer_plugins = {
     path = "/Users/georgios.iliadis/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["shadow.nvim"] = {
+    config = { "\27LJ\2\n\\\0\0\3\0\6\0\n6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\3\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\vshadow\16colorscheme\bcmd\18termguicolors\bopt\bvim\0" },
+    loaded = true,
+    path = "/Users/georgios.iliadis/.local/share/nvim/site/pack/packer/start/shadow.nvim",
+    url = "https://github.com/rjshkhr/shadow.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/georgios.iliadis/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -212,6 +213,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: shadow.nvim
+time([[Config for shadow.nvim]], true)
+try_loadstring("\27LJ\2\n\\\0\0\3\0\6\0\n6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\3\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\vshadow\16colorscheme\bcmd\18termguicolors\bopt\bvim\0", "config", "shadow.nvim")
+time([[Config for shadow.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

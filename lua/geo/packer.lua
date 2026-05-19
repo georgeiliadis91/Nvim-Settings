@@ -49,18 +49,21 @@ return require('packer').startup(function(use)
   use 'chentoast/marks.nvim'
 
   use {
-	'nvim-telescope/telescope.nvim', tag = '0.1.2',
-	-- or                            , branch = '0.1.x',
-	requires = { {'nvim-lua/plenary.nvim'} }
+	  "nvim-telescope/telescope.nvim", tag = "0.1.3",
+	  -- or                            , branch = "0.1.x",
+	  requires = { {"nvim-lua/plenary.nvim"} }
   }
 
   --Theme 
-  use({
-       'AlexvZyl/nordic.nvim',
-       as = 'nordic',
-  })
+  use {
+   "rjshkhr/shadow.nvim",
+   config = function()
+       vim.opt.termguicolors = true
+       vim.cmd.colorscheme("shadow")
+   end
+}
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate', branch = "master"})
+  use({"nvim-treesitter/nvim-treesitter", tag = "v0.10.0", lazy = false, build = ":TSUpdate" })
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
