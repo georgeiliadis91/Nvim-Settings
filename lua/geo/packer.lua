@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
 
   -- Github-copilot
   use 'github/copilot.vim'
-  use 'lewis6991/gitsigns.nvim'
+  --
   -- Status line
   --
   use  {
@@ -20,9 +20,13 @@ return require('packer').startup(function(use)
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
+  -- Tabs plugin These optional plugins should be loaded directly because of a bug in Packer lazy loading
+  use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+  use 'romgrk/barbar.nvim'
+
+
   -- Tabs
   -- use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
-  -- use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
 
   -- File tree
   use 'nvim-tree/nvim-tree.lua'
@@ -59,7 +63,9 @@ return require('packer').startup(function(use)
       "folke/tokyonight.nvim",
       lazy = false,
       priority = 1000,
-      opts = { },
+      opts = {
+        transparent = true,
+      },
         config = function()
            vim.cmd('colorscheme tokyonight-storm')
         end
@@ -93,3 +99,4 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},	  }
   }
 end)
+
