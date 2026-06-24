@@ -3,7 +3,7 @@ require("tokyonight").setup({
   -- or leave it empty to use the default settings
   style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
   light_style = "day", -- The theme is used when the background is set to light
-  transparent = false, -- Enable this to disable setting the background color
+  transparent = true, -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
   styles = {
     -- Style to be applied to different syntax groups
@@ -39,6 +39,11 @@ require("tokyonight").setup({
 
 
 })
+
+-- Apply the colorscheme here, AFTER setup(), so options like
+-- `transparent = true` take effect. The colorscheme call in packer's
+-- config runs before this setup() and would otherwise win on startup.
+vim.cmd.colorscheme("tokyonight-storm")
 
 function ThemeUpdate(color)
  	color = color or "tokyonight-storm"
