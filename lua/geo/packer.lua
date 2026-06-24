@@ -55,13 +55,15 @@ return require('packer').startup(function(use)
   }
 
   --Theme 
-  use {
-   "rjshkhr/shadow.nvim",
-   config = function()
-       vim.opt.termguicolors = true
-       vim.cmd.colorscheme("shadow")
-   end
-}
+  use ({
+      "folke/tokyonight.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = { },
+        config = function()
+           vim.cmd('colorscheme tokyonight-storm')
+        end
+  })
 
   use({"nvim-treesitter/nvim-treesitter", tag = "v0.10.0", lazy = false, build = ":TSUpdate" })
   use('theprimeagen/harpoon')
