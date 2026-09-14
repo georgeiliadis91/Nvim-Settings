@@ -1,7 +1,6 @@
 require('lualine').setup {
   options = {
-    theme = 'tokyonight',
-    transparent = true,
+    theme = 'auto', -- resolves to lua/lualine/themes/cobalt2.lua via g:colors_name
   },
   sections = {
     lualine_c = {

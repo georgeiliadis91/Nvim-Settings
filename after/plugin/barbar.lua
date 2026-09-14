@@ -1,2 +1,1 @@
-
-require("romgrk/barbar.nvim").setup({});
+require("barbar").setup({});

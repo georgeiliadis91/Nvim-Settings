@@ -1,61 +1,103 @@
-local lsp = require("lsp-zero")
+-- ╭──────────────────────────────────────────────────────────╮
+-- │  Native LSP setup (Neovim 0.11+ vim.lsp.config API)      │
+-- │  Migrated off lsp-zero.nvim v2.x, which is unmaintained   │
+-- │  and calls the deprecated require('lspconfig') framework. │
+-- ╰──────────────────────────────────────────────────────────╯
 
-lsp.preset("recommended")
+if vim.fn.has('nvim-0.11') == 0 then
+  vim.notify(
+    'lsp.lua requires Neovim 0.11+ for vim.lsp.config. LSP is disabled.',
+    vim.log.levels.WARN
+  )
+  return
+end
 
-lsp.ensure_installed({
-  'ts_ls',
-  'rust_analyzer',
+--------------------------------------------------------------------------------
+--  Server installation (mason)
+--------------------------------------------------------------------------------
+
+require('mason').setup()
+
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'ts_ls',
+    'rust_analyzer',
+    'lua_ls',
+  },
+  -- Calls vim.lsp.enable() for every installed server, using the config
+  -- specs that nvim-lspconfig ships in its `lsp/` directory.
+  automatic_enable = true,
 })
 
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
+--------------------------------------------------------------------------------
+--  Shared config for every server
+--------------------------------------------------------------------------------
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+local ok_cmp_lsp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+if ok_cmp_lsp then
+  capabilities = vim.tbl_deep_extend('force', capabilities, cmp_lsp.default_capabilities())
+end
+
+vim.lsp.config('*', {
+  capabilities = capabilities,
 })
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
+--------------------------------------------------------------------------------
+--  Per-server overrides
+--------------------------------------------------------------------------------
 
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+-- Fix "Undefined global `vim`" and teach lua_ls about the Neovim runtime.
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = { 'vim' } },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
+      },
+      telemetry = { enable = false },
+    },
+  },
 })
 
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+--------------------------------------------------------------------------------
+--  Buffer-local keymaps on attach
+--------------------------------------------------------------------------------
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('geo_lsp_attach', { clear = true }),
+  callback = function(event)
+    local opts = { buffer = event.buf, remap = false }
+
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>lws', vim.lsp.buf.workspace_symbol, opts)
+    vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
+    vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
+    vim.keymap.set('n', '<leader>lsa', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>lrr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>lrn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+  end,
 })
 
-lsp.on_attach(function(_, bufnr)
-  local opts = {buffer = bufnr, remap = false}
-
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "<leader>lws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>dd", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set("n", "<leader>lsa", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>lrr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>lrn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
-
-lsp.setup()
+--------------------------------------------------------------------------------
+--  Diagnostics
+--------------------------------------------------------------------------------
 
 vim.diagnostic.config({
-    virtual_text = true
+  virtual_text = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = 'E',
+      [vim.diagnostic.severity.WARN]  = 'W',
+      [vim.diagnostic.severity.HINT]  = 'H',
+      [vim.diagnostic.severity.INFO]  = 'I',
+    },
+  },
+  severity_sort = true,
 })
-
-

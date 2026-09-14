@@ -59,44 +59,40 @@ return require('packer').startup(function(use)
   }
 
   --Theme 
-  use ({
-      "folke/tokyonight.nvim",
-      lazy = false,
-      priority = 1000,
-      opts = {
-        transparent = true,
-      },
-        config = function()
-           vim.cmd('colorscheme tokyonight-storm')
-        end
-  })
+  --
+--  use "olimorris/onedarkpro.nvim"
+  -- NOTE: colorbuddy must stay on v1.0.0. On `main` its `colorscheme()` no
+  -- longer requires the theme module, which silently breaks cobalt2.
+  use {
+    'lalitmee/cobalt2.nvim',
+    requires = { 'tjdevries/colorbuddy.nvim', tag = 'v1.0.0' }
+  }
 
   use({"nvim-treesitter/nvim-treesitter", tag = "v0.10.0", lazy = false, build = ":TSUpdate" })
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('brenoprata10/nvim-highlight-colors')
-  -- LSP setup 
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v2.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
+  -- LSP setup
+  --
+  -- lsp-zero has been removed: its v2.x branch is unmaintained and drives the
+  -- deprecated `require('lspconfig')` framework, which nvim-lspconfig will
+  -- delete in v3.0.0. Servers are configured natively via `vim.lsp.config`
+  -- in after/plugin/lsp.lua instead.
+  use {'neovim/nvim-lspconfig'}
+  use {'mason-org/mason.nvim'}
+  use {'mason-org/mason-lspconfig.nvim'}
 
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
+  -- Autocompletion
+  use {'hrsh7th/nvim-cmp'}
+  use {'hrsh7th/cmp-buffer'}
+  use {'hrsh7th/cmp-path'}
+  use {'saadparwaiz1/cmp_luasnip'}
+  use {'hrsh7th/cmp-nvim-lsp'}
+  use {'hrsh7th/cmp-nvim-lua'}
 
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},	  }
-  }
+  -- Snippets
+  use {'L3MON4D3/LuaSnip'}
+  use {'rafamadriz/friendly-snippets'}
 end)
 

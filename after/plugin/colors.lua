@@ -1,51 +1,23 @@
-require("tokyonight").setup({
-  -- your configuration comes here
-  -- or leave it empty to use the default settings
-  style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  light_style = "day", -- The theme is used when the background is set to light
-  transparent = true, -- Enable this to disable setting the background color
-  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
-  styles = {
-    -- Style to be applied to different syntax groups
-    -- Value is any valid attr-list value for `:help nvim_set_hl`
-    comments = { italic = true },
-    keywords = { italic = true },
-    functions = {},
-    variables = {},
-    -- Background styles. Can be "dark", "transparent" or "normal"
-    sidebars = "dark", -- style for sidebars, see below
-    floats = "dark", -- style for floating windows
-  },
-  sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-  day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-  hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-  dim_inactive = false, -- dims inactive windows
-  lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+-- NOTE: colorbuddy on `main` (>= 8b96858) dropped the `pcall(require, name)`
+-- at the end of `colorscheme()`, so it only sets g:colors_name / termguicolors
+-- and never loads the theme module. cobalt2's `colors/cobalt2.vim` is an empty
+-- stub, so `:colorscheme cobalt2` doesn't help either. Load the module here.
+local function load_cobalt2()
+  require('colorbuddy').colorscheme('cobalt2')
 
-  --- You can override specific color groups to use other groups or a hex color
-  --- function will be called with a ColorScheme table
-  ---@param colors ColorScheme
-  on_colors = function(colors) end,
+  -- Idempotent re-load: drop the cached module so the highlight groups are
+  -- re-declared when the theme is applied more than once.
+  package.loaded['cobalt2'] = nil
+  require('cobalt2')
+end
 
-  --- You can override specific highlights to use other groups or a hex color
-  --- function will be called with a Highlights and ColorScheme table
-  ---@param highlights Highlights
-  ---@param colors ColorScheme
-  on_highlights = function(highlights, colors) end,
-
-
-
-
-
-
-})
-
--- Apply the colorscheme here, AFTER setup(), so options like
--- `transparent = true` take effect. The colorscheme call in packer's
--- config runs before this setup() and would otherwise win on startup.
-vim.cmd.colorscheme("tokyonight-storm")
+load_cobalt2()
 
 function ThemeUpdate(color)
- 	color = color or "tokyonight-storm"
- 	vim.cmd.colorscheme(color)
+  color = color or "cobalt2"
+  if color == "cobalt2" then
+    load_cobalt2()
+  else
+    vim.cmd.colorscheme(color)
+  end
 end
